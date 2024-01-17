@@ -29,7 +29,7 @@ public class AllBoard<T> {
 
     protected Node<T> root = null;
     protected Node<T> tail = null;
-    protected int size = 0;
+    protected static int size = 0;
 
     public void add(T o) {
         size++;
@@ -62,6 +62,9 @@ public class AllBoard<T> {
             }
         }
         return null;
+    }
+    public static int size() {
+        return size;
     }
     public T get(int i) {
         return getNode(i).value;
