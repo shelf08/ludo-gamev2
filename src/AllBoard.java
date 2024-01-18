@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AllBoard<T> {
+
     public Object[] toArray() {
 
         Object[] result = new Object[this.size];
@@ -14,7 +15,7 @@ public class AllBoard<T> {
         return result;
     }
 
-    protected static class Node<T> {
+    protected class Node<T> {
         public T value;
         public Node<T> next = null;
         public Node<T> previous = null;
@@ -32,7 +33,7 @@ public class AllBoard<T> {
 
     protected Node<T> root = null;
     protected Node<T> tail = null;
-    protected static int size = 0;
+    protected int size = 0;
 
     public void add(T o) {
         size++;
@@ -66,18 +67,19 @@ public class AllBoard<T> {
         }
         return null;
     }
-    public static int size() {
+    public  int size() {
         return size;
     }
     public T get(int i) {
         return getNode(i).value;
     }
-    static void initializePieces(Player player) {
+
+    public void initializePieces(Player player) {
 
         String color = player.getColor();
     }
 
-    public static void printBoard(){
+    public void printBoard(){
         ArrayList<Integer> list = new ArrayList<>(52);
 
         for (int i = 0; i < 52; i++) {

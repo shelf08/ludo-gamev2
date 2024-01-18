@@ -4,8 +4,12 @@ import java.util.Arrays;
 
 public class BoardRed<T> extends AllBoard<T> {
 
-    public static void clearList(){
-        int numberHOD = GameLogic.currentPlayer.getNumberRolled();
+
+    public void clearList(){
+
+        GameLogic gameLogic = new GameLogic();
+
+        int numberHOD = gameLogic.currentPlayer.getNumberRolled();
         ArrayList<Integer> list = new ArrayList<>(52);
         for (int i = 0; i < 52; i++) {
             list.add(i);
@@ -14,7 +18,7 @@ public class BoardRed<T> extends AllBoard<T> {
         System.out.println(list);
     }
 
-    public static void redWay() {
+    public void redWay() {
 
         ArrayList<Integer> list = new ArrayList<>(51);
 

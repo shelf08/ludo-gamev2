@@ -3,11 +3,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GameLogic {
-    public static String[] colorList = {"Красный", "Синий"};
-    public static List<Player> playerList = new ArrayList<Player>();
-    public static Player currentPlayer;
+    public String[] colorList = {"Красный", "Синий"};
+    public List<Player> playerList = new ArrayList<Player>();
+    public Player currentPlayer;
 
-    public static void runGame(){
+
+    public void runGame(){
+
+        AllBoard allBoard = new AllBoard();
 
         System.out.println("Выберите количество игроков 2-4.");
 
@@ -144,10 +147,10 @@ public class GameLogic {
         System.out.println(currentPlayer + " первым начинает игру.");
 
         for(int i=0; i<playerList.size(); i++)
-            AllBoard.initializePieces(playerList.get(i));
+            allBoard.initializePieces(playerList.get(i));
     }
 
-    private static List<Player> determineHighestRoller(List<Player> playersWhoRolled) {
+    private List<Player> determineHighestRoller(List<Player> playersWhoRolled) {
 
         List<Player> highRollers = new ArrayList<Player>();
         Player highestRoller = playersWhoRolled.get(0);
@@ -193,7 +196,10 @@ public class GameLogic {
 
     }
 
-    public static void continueGame() {
+    public void continueGame() {
+
+        BoardRed boardRed = new BoardRed();
+
 //        System.out.println();
 //        while (currentPlayer.getNumberRolled() != 6 ) {
 //            currentPlayer.rollDice();
@@ -212,7 +218,8 @@ public class GameLogic {
         game:
         while (!gameCompleted) {
 
-            AllBoard.printBoard();
+            AllBoard allBoard = new AllBoard();
+            allBoard.printBoard();
             System.out.println();
             System.out.println("Очередь " + currentPlayer + ". Единственное, что ты можешь сделать, это бросить кости - \"r\".");
 
@@ -240,7 +247,7 @@ public class GameLogic {
 
                 }
                 System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled() + " и делает ход." );
-                BoardRed.clearList();
+                boardRed.clearList();
 
             }
             setNextPlayer();
@@ -248,7 +255,7 @@ public class GameLogic {
         }
     }
 
-    private static void setNextPlayer() {
+    private void setNextPlayer() {
 
         int nextIndex = playerList.indexOf(currentPlayer) + 1;
 

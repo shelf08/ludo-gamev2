@@ -5,14 +5,19 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
-        GameLogic.runGame();
+        GameLogic gameLogic = new GameLogic();
+        BoardRed boardRed = new BoardRed();
+        BoardBlue boardBlue = new BoardBlue();
+
+
+        gameLogic.runGame();
         System.out.println();
         System.out.print("Игровое поле: ");
-        GameLogic.continueGame();
+        gameLogic.continueGame();
 
 
-//        BoardRed.redWay();
-//        BoardBlue.blueWay();
+//        boardRed.redWay();
+//        boardBlue.blueWay();
 
 
 

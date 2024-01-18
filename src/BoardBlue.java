@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class BoardBlue<T> extends AllBoard<T> {
 
-    public static void blueWay() {
+    public void blueWay() {
 
         ArrayList<Integer> list = new ArrayList<>(51);
 
