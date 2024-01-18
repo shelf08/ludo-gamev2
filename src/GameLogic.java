@@ -104,7 +104,7 @@ public class GameLogic {
             while(!rollsComplete) {
 
                 Player currentPlayer = highestRollers.get(rollerCounter);
-                System.out.println(currentPlayer + "'s turn.");
+                System.out.println(currentPlayer + "бросил");
 
                 scanner = new Scanner(System.in);
                 String input = "";
@@ -148,8 +148,103 @@ public class GameLogic {
             AllBoard.initializePieces(playerList.get(i));
     }
 
-    private static List<Player> determineHighestRoller(List<Player> playerList) {
-        return playerList;
+    private static List<Player> determineHighestRoller(List<Player> playersWhoRolled) {
+
+        List<Player> highRollers = new ArrayList<Player>();
+        Player highestRoller = playersWhoRolled.get(0);
+        boolean complete = false;
+        int playerCounter = 1;
+
+        while(!complete) {
+
+            Player nextPlayer = playersWhoRolled.get(playerCounter++);
+
+            int currentHighest = highestRoller.getNumberRolled();
+            int nextPlayersRoll = nextPlayer.getNumberRolled();
+
+            if(currentHighest>nextPlayersRoll) {
+
+
+
+            } else if(currentHighest<nextPlayersRoll) {
+
+                highestRoller = nextPlayer;
+
+                highRollers.clear();
+
+            } else if(currentHighest==nextPlayersRoll) {
+
+
+                if(!highRollers.contains(highestRoller))
+                    highRollers.add(highestRoller);
+                if(!highRollers.contains(nextPlayer))
+                    highRollers.add(nextPlayer);
+
+            }
+
+            if(playerCounter==playersWhoRolled.size())
+                complete = true;
+
+        }
+
+        if(highRollers.size()==0)
+            highRollers.add(highestRoller);
+
+        return highRollers;
+
+    }
+
+    public static void continueGame() {
+//        System.out.println();
+//        while (currentPlayer.getNumberRolled() != 6 ) {
+//            currentPlayer.rollDice();
+//
+//            if (currentPlayer.getNumberRolled() == 6) {
+//                System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled());
+//                System.out.println("Вытащи пешку");
+//            } else {
+//                setNextPlayer();
+//            }
+//        }
+
+        Scanner scanner = null;
+        boolean gameCompleted = false;
+
+        game:
+        while (!gameCompleted) {
+
+            AllBoard.printBoard();
+
+            System.out.println("Очередь " + currentPlayer + " Единственное, что ты можешь сделать, это бросить кости - \"r\".");
+
+            boolean rollComplete = false;
+
+            while (!rollComplete) {
+
+                scanner = new Scanner(System.in);
+                String input = "";
+
+                try {
+                    input = scanner.next();
+                } catch (Exception e) {
+
+                }
+
+                if (input.equals("r")) {
+
+                    currentPlayer.rollDice();
+                    rollComplete = true;
+
+                } else {
+
+                    System.out.println("Что-то пошло не так. Введите \"r\".");
+                    continue;
+
+                }
+
+            }
+
+        }
     }
 
     private static void setNextPlayer() {

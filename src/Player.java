@@ -3,6 +3,7 @@ public class Player {
     public String color;
     public Piece[] piece;
     public int numberRolled;
+    private boolean hasRolledSix;
     public void rollDice() {
 
         numberRolled = new Dice().DiceNum();
@@ -24,6 +25,9 @@ public class Player {
 
     String getColor() {
         return color;
+    }
+    boolean hasRolledSix() {
+        return hasRolledSix;
     }
 
     int getNumberRolled() {

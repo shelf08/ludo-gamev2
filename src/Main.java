@@ -4,20 +4,18 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>(52);
 
-        for (int i = 0; i < 52; i++) {
-            list.add(i);
-        }
-
+        GameLogic.runGame();
         System.out.println();
-        System.out.println("Игровое поле:" + Arrays.toString(list.toArray()));
+        System.out.print("Игровое поле: ");
+//        AllBoard.printBoard();
+        GameLogic.continueGame();
 
 
 //        BoardRed.redWay();
 //        BoardBlue.blueWay();
 
-        GameLogic.runGame();
+
 
     }
 

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class AllBoard<T> {
     public Object[] toArray() {
 
@@ -72,6 +75,15 @@ public class AllBoard<T> {
     static void initializePieces(Player player) {
 
         String color = player.getColor();
+    }
+
+    public static void printBoard(){
+        ArrayList<Integer> list = new ArrayList<>(52);
+
+        for (int i = 0; i < 52; i++) {
+            list.add(i);
+        }
+        System.out.print(Arrays.toString(list.toArray()));
     }
 
 }
