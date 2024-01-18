@@ -8,7 +8,6 @@ public class Main {
         GameLogic.runGame();
         System.out.println();
         System.out.print("Игровое поле: ");
-//        AllBoard.printBoard();
         GameLogic.continueGame();
 
 

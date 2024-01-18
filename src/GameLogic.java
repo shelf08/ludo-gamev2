@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class GameLogic {
     public static String[] colorList = {"Красный", "Синий"};
     public static List<Player> playerList = new ArrayList<Player>();
-    private static Player currentPlayer;
+    public static Player currentPlayer;
 
     public static void runGame(){
 
@@ -37,7 +37,6 @@ public class GameLogic {
             }
 
         }
-
 
         for(int i=0; i<playerList.size(); i++)
             System.out.println(playerList.get(i) + " присоединился к игре.");
@@ -214,8 +213,8 @@ public class GameLogic {
         while (!gameCompleted) {
 
             AllBoard.printBoard();
-
-            System.out.println("Очередь " + currentPlayer + " Единственное, что ты можешь сделать, это бросить кости - \"r\".");
+            System.out.println();
+            System.out.println("Очередь " + currentPlayer + ". Единственное, что ты можешь сделать, это бросить кости - \"r\".");
 
             boolean rollComplete = false;
 
@@ -238,12 +237,14 @@ public class GameLogic {
                 } else {
 
                     System.out.println("Что-то пошло не так. Введите \"r\".");
-                    continue;
 
                 }
+                System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled() + " и делает ход." );
+                BoardRed.clearList();
 
             }
-
+            setNextPlayer();
+            break;
         }
     }
 

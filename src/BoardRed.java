@@ -4,6 +4,16 @@ import java.util.Arrays;
 
 public class BoardRed<T> extends AllBoard<T> {
 
+    public static void clearList(){
+        int numberHOD = GameLogic.currentPlayer.getNumberRolled();
+        ArrayList<Integer> list = new ArrayList<>(52);
+        for (int i = 0; i < 52; i++) {
+            list.add(i);
+        }
+        list.subList(0,numberHOD).clear();
+        System.out.println(list);
+    }
+
     public static void redWay() {
 
         ArrayList<Integer> list = new ArrayList<>(51);
