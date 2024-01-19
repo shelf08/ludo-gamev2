@@ -8,6 +8,7 @@ public class GameLogic {
     public Player currentPlayer;
 
 
+
     public void runGame(){
 
         AllBoard allBoard = new AllBoard();
@@ -198,40 +199,34 @@ public class GameLogic {
 
     public void continueGame() {
 
+
         BoardRed boardRed = new BoardRed();
+        AllBoard allBoard = new AllBoard();
+        Piece piece = new Piece();
 
-//        System.out.println();
-//        while (currentPlayer.getNumberRolled() != 6 ) {
-//            currentPlayer.rollDice();
-//
-//            if (currentPlayer.getNumberRolled() == 6) {
-//                System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled());
-//                System.out.println("Вытащи пешку");
-//            } else {
-//                setNextPlayer();
-//            }
-//        }
 
-        Scanner scanner = null;
-        boolean gameCompleted = false;
+        System.out.println();
+        allBoard.printBoard();
+        System.out.println();
 
-        game:
-        while (!gameCompleted) {
+        while (currentPlayer.getNumberRolled() != 6) {
 
-            AllBoard allBoard = new AllBoard();
-            allBoard.printBoard();
-            System.out.println();
-            System.out.println("Очередь " + currentPlayer + ". Единственное, что ты можешь сделать, это бросить кости - \"r\".");
+            System.out.println("Игрок должен бросить кости, чтобы бросить кости, введите \"r\".");
 
-            boolean rollComplete = false;
+            boolean initComplete = false;
+            int playerCounter = 0;
 
-            while (!rollComplete) {
+            while (!initComplete) {
 
-                scanner = new Scanner(System.in);
+                Player currentPlayer = playerList.get(playerCounter);
+                System.out.println("Очередь" + currentPlayer);
+
+                Scanner scanner1 = new Scanner(System.in);
                 String input = "";
 
                 try {
-                    input = scanner.next();
+                    input = scanner1.next();
+
                 } catch (Exception e) {
 
                 }
@@ -239,21 +234,83 @@ public class GameLogic {
                 if (input.equals("r")) {
 
                     currentPlayer.rollDice();
-                    rollComplete = true;
+                    System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled());
 
                 } else {
 
                     System.out.println("Что-то пошло не так. Введите \"r\".");
+                    continue;
 
                 }
-                System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled() + " и делает ход." );
-                boardRed.clearList();
+
+                if (++playerCounter == playerList.size())
+                    initComplete = true;
 
             }
+
+            for (int i = 0; i < playerList.size(); i++)
+                System.out.println(playerList.get(i) + " получает " + playerList.get(i).getNumberRolled());
+
             setNextPlayer();
-            break;
+
+            if (currentPlayer.getNumberRolled() == 6) {
+
+                System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled());
+
+                System.out.println("Вытащи пешку: ");
+
+                Scanner scanner2 = new Scanner(System.in);
+                String input = "";
+                input = scanner2.next();
+
+                if (input.equals("1")) {
+
+
+                    int nextPieceNumber = piece.getNextPieceNumber();
+
+                    System.out.println("Вытащили с базы пешку № " + nextPieceNumber);
+                    allBoard.printBoard();
+                    System.out.println();
+                    System.out.println("Очередь " + currentPlayer + ". Единственное, что ты можешь сделать, это бросить кости - \"r\".");
+
+                    boolean rollComplete = false;
+                    Scanner scanner3 = null;
+
+                    while (!rollComplete) {
+
+                        scanner3 = new Scanner(System.in);
+                        String input2 = "";
+
+                        try {
+                            input2 = scanner3.next();
+                        } catch (Exception e) {
+
+                        }
+
+                        if (input2.equals("r")) {
+
+                            currentPlayer.rollDice();
+                            rollComplete = true;
+
+                        } else {
+
+                            System.out.println("Что-то пошло не так. Введите \"r\".");
+
+                        }
+                        System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled() + " и делает ход.");
+
+                        //boardRed.clearList();
+
+                    }
+                } else {
+                    System.out.println("Неправильный номер пешки.");
+                }
+
+
+            }
         }
     }
+
 
     private void setNextPlayer() {
 

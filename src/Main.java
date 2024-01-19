@@ -15,8 +15,6 @@ public class Main {
         System.out.print("Игровое поле: ");
         gameLogic.continueGame();
 
-
-//        boardRed.redWay();
 //        boardBlue.blueWay();
 
 

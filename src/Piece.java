@@ -1,16 +1,29 @@
 class Piece {
 
-    private int pieceNumber;
+    public int pieceNumber;
     private String color;
     private boolean takenOut;
     private boolean completed;
 
-    Piece(int pieceNumber, String color) {
+
+
+    public Piece(int pieceNumber, String color) {
 
         this.pieceNumber = pieceNumber+1;
         this.color = color;
 
     }
+    private int lastPieceNumber = 0;
+
+    public int getNextPieceNumber() {
+        lastPieceNumber = (lastPieceNumber % 4) + 1;
+        return lastPieceNumber;
+    }
+
+    public Piece() {
+    }
+
+
     String getColor() {
         return color;
     }
