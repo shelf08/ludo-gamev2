@@ -1,6 +1,4 @@
-
-import java.util.ArrayList;
-import java.util.Arrays;
+package ru.vsu.cs.oop23.lobtsov_d_a.task2_ludo;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +12,8 @@ public class Main {
         System.out.println();
         System.out.print("Игровое поле: ");
         gameLogic.continueGame();
+        gameLogic.moveGame();
+        gameLogic.endGame();
 
 //        boardBlue.blueWay();
 

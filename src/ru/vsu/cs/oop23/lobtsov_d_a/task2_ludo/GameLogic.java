@@ -1,3 +1,5 @@
+package ru.vsu.cs.oop23.lobtsov_d_a.task2_ludo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -196,6 +198,17 @@ public class GameLogic {
         return highRollers;
 
     }
+    private void setNextPlayer() {
+
+        int nextIndex = playerList.indexOf(currentPlayer) + 1;
+
+        if(nextIndex==playerList.size())
+            nextIndex = 0;
+
+        currentPlayer = playerList.get(nextIndex);
+
+
+    }
 
     public void continueGame() {
 
@@ -257,13 +270,13 @@ public class GameLogic {
 
                 System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled());
 
-                System.out.println("Вытащи пешку: ");
+                System.out.println("Вытащи пешку, введя t: ");
 
                 Scanner scanner2 = new Scanner(System.in);
                 String input = "";
                 input = scanner2.next();
 
-                if (input.equals("1")) {
+                if (input.equals("t")) {
 
 
                     int nextPieceNumber = piece.getNextPieceNumber();
@@ -292,35 +305,28 @@ public class GameLogic {
                             currentPlayer.rollDice();
                             rollComplete = true;
 
+
                         } else {
 
                             System.out.println("Что-то пошло не так. Введите \"r\".");
 
                         }
                         System.out.println(currentPlayer + " получает " + currentPlayer.getNumberRolled() + " и делает ход.");
-
-                        //boardRed.clearList();
-
+                        boardRed.clearList(this);
+                        setNextPlayer();
                     }
                 } else {
                     System.out.println("Неправильный номер пешки.");
                 }
-
-
             }
         }
     }
 
+    public void moveGame(){
 
-    private void setNextPlayer() {
+    }
 
-        int nextIndex = playerList.indexOf(currentPlayer) + 1;
-
-        if(nextIndex==playerList.size())
-            nextIndex = 0;
-
-        currentPlayer = playerList.get(nextIndex);
-
-
+    public void endGame(){
+//        player.hasWon();
     }
 }

@@ -1,3 +1,5 @@
+package ru.vsu.cs.oop23.lobtsov_d_a.task2_ludo;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

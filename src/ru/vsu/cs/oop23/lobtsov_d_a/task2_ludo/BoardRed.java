@@ -1,3 +1,4 @@
+package ru.vsu.cs.oop23.lobtsov_d_a.task2_ludo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -5,9 +6,7 @@ import java.util.Arrays;
 public class BoardRed<T> extends AllBoard<T> {
 
 
-    public void clearList(){
-
-        GameLogic gameLogic = new GameLogic();
+    public void clearList(GameLogic gameLogic){
 
         int numberHOD = gameLogic.currentPlayer.getNumberRolled();
         ArrayList<Integer> list = new ArrayList<>(52);

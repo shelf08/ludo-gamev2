@@ -1,3 +1,5 @@
+package ru.vsu.cs.oop23.lobtsov_d_a.task2_ludo;
+
 class Piece {
 
     public int pieceNumber;

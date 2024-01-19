@@ -1,15 +1,19 @@
+package ru.vsu.cs.oop23.lobtsov_d_a.task2_ludo;
+
 public class Player {
 
     public String color;
     public Piece[] piece;
     public int numberRolled;
-    private boolean hasRolledSix;
+    public boolean hasRolledSix;
+    GameLogic gameLogic = new GameLogic();
+
     public void rollDice() {
 
         numberRolled = new Dice().DiceNum();
 
     }
-    Player(String color) {
+    public Player(String color) {
 
         this.color = color;
 
@@ -38,14 +42,16 @@ public class Player {
     public String toString() {
         return " Игрок " + color;
     }
-    boolean hasWon() {
 
-        for(int i=0; i<4; i++)
-            if(!piece[i].isCompleted())
-                return false;
+    public void hasWon() {
+
+        for(int i=0; i<4; i++) {
+            if (piece[i].isCompleted()) {
+                System.out.println(gameLogic.currentPlayer + " победил в игре!" );
+            }
+        }
 
         // победа
-        return true;
 
     }
 }
